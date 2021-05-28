@@ -10,72 +10,43 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity(name = "Student")
-@Table(
-        name = "student",
-        uniqueConstraints = {
-                @UniqueConstraint(name = "student_email_unique", columnNames = "email")
-        }
-)
+@Table(name = "student",
+    uniqueConstraints = { @UniqueConstraint(name = "student_email_unique",
+        columnNames = "email") })
 public class Student
 {
 
   @Id
-  @SequenceGenerator(
-          name = "student_sequence",
-          sequenceName = "student_sequence",
-          allocationSize = 1
-  )
-  @GeneratedValue(
-          strategy = GenerationType.SEQUENCE,
-          generator = "student_sequence"
-  )
-  @Column(
-          name = "id",
-          updatable = false
-  )
-  private Long    id;
+  @SequenceGenerator(name = "student_sequence",
+      sequenceName = "student_sequence",
+      allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE,
+      generator = "student_sequence")
+  @Column(name = "id", updatable = false)
+  private Long id;
 
-  @Column(
-          name = "first_name",
-          nullable = false,
-          columnDefinition = "TEXT"
-  )
-  private String  firstName;
+  @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
+  private String firstName;
 
-  @Column(
-          name = "last_name",
-          nullable = false,
-          columnDefinition = "TEXT"
-  )
-  private String  lastName;
+  @Column(name = "last_name", nullable = false, columnDefinition = "TEXT")
+  private String lastName;
 
-  @Column(
-          name = "email",
-          nullable = false,
-          columnDefinition = "TEXT"
-  )
-  private String  email;
+  @Column(name = "email", nullable = false, columnDefinition = "TEXT")
+  private String email;
 
-  @Column(
-          name = "age",
-          nullable = false
-  )
+  @Column(name = "age", nullable = false)
   private Integer age;
 
-  public Student(Long id,
-                 String firstName,
-                 String lastName,
-                 String email,
-                 Integer age)
+  public Student(String firstName, String lastName, String email, Integer age)
   {
-    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
     this.age = age;
   }
 
-  public Student() {
+  public Student()
+  {
 
   }
 
