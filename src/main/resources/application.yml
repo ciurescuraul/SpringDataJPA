@@ -1,0 +1,18 @@
+logging:
+  level:
+    root: INFO
+    web: INFO
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/crud
+    username: cyberdev
+    password: cyberdev
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
