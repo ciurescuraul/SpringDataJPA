@@ -3,6 +3,7 @@ package com.cyberdev.springdatajpa;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,9 +52,10 @@ public class Student
   @OneToMany(
           mappedBy = "student",
           orphanRemoval = true,
-          cascade = {CascadeType.PERSIST, CascadeType.REMOVE}
+          cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+          fetch = FetchType.LAZY
   )
-  private List<Book> books = new ArrayList<>();
+  private final List<Book> books = new ArrayList<>();
 
   public Student(String firstName, String lastName, String email, Integer age)
   {
@@ -130,6 +132,10 @@ public class Student
       this.books.remove(book);
       book.setStudent(null);
     }
+  }
+
+  public List<Book> getBooks() {
+    return books;
   }
 
   @Override
