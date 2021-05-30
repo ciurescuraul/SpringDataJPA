@@ -62,6 +62,11 @@ public class StudentIdCard
     this.cardNumber = cardNumber;
   }
 
+  public StudentIdCard(String cardNumber, Student student) {
+    this.cardNumber = cardNumber;
+    this.student = student;
+  }
+
   public Long getId() {
     return id;
   }
