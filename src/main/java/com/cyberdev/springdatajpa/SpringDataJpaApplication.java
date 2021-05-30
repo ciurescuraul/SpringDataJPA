@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import com.github.javafaker.Faker;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @SpringBootApplication
 public class SpringDataJpaApplication
@@ -46,6 +47,17 @@ public class SpringDataJpaApplication
               new Book("Spring Data JPA", LocalDateTime.now().minusYears(1)));
 
       studentIdCardRepository.save(studentIdCard);
+
+      studentRepository.findById(1L)
+              .ifPresent(s -> {
+                System.out.println("fecth book lazy ...");
+                List<Book> books = student.getBooks();
+                books.forEach(book -> {
+                  System.out.println(
+                          s.getFirstName() + " borrowed " + book.getBookName()
+                  );
+                });
+              });
 
     };
   }
