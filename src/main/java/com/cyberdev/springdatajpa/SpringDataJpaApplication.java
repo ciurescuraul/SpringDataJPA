@@ -53,6 +53,9 @@ public class SpringDataJpaApplication
       studentRepository.findStudentsByFirstNameEqualsAndAgeIsGreaterThanEqualNative("Raul", 25)
           .forEach(System.out::println);
 
+      studentRepository.findStudentsByFirstNameEqualsAndAgeIsGreaterThanEqualNamedParameters("Ioana", 25)
+              .forEach(System.out::println);
+
     };
   }
 
