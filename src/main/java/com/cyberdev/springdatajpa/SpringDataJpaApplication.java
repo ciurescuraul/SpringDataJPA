@@ -47,7 +47,10 @@ public class SpringDataJpaApplication
                            () -> System.out
                                .println("Student with ioana.ionescu@cyberit.ro not found."));
 
-      studentRepository.findStudentsByFirstNameEqualsAndAgeIsGreaterThanEqual("Raul", 17)
+      studentRepository.findStudentsByFirstNameEqualsAndAgeIsGreaterThanEqual("Raul", 25)
+              .forEach(System.out::println);
+
+      studentRepository.findStudentsByFirstNameEqualsAndAgeIsGreaterThanEqualNative("Raul", 25)
           .forEach(System.out::println);
 
     };
