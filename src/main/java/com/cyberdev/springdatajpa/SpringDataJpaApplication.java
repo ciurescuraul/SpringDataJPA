@@ -30,12 +30,25 @@ public class SpringDataJpaApplication
                                  "raul.ciurescu@cyberit.ro",
                                  37);
 
-      studentRepository.saveAll(List.of(ioana,raul));
+      Student raul2 = new Student("Raul",
+                                  "Ciurescu",
+                                  "raul2.ciurescu@cyberit.ro",
+                                  25);
 
-      studentRepository
-              .findStudentsByEmail("ioana.ionescu@cyberit.ro")
-              .ifPresentOrElse(System.out::println,
-                      () -> System.out.println("Student with ioana.ionescu@cyberit.ro not found."));
+      Student raul3 = new Student("Raul",
+                                  "Ciurescu",
+                                  "raul3.ciurescu@cyberit.ro",
+                                  17);
+
+      studentRepository.saveAll(List.of(ioana, raul, raul2, raul3));
+
+      studentRepository.findStudentsByEmail("ioana.ionescu@cyberit.ro")
+          .ifPresentOrElse(System.out::println,
+                           () -> System.out
+                               .println("Student with ioana.ionescu@cyberit.ro not found."));
+
+      studentRepository.findStudentsByFirstNameEqualsAndAgeIsGreaterThanEqual("Raul", 17)
+          .forEach(System.out::println);
 
     };
   }
