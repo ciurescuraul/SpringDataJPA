@@ -56,6 +56,9 @@ public class SpringDataJpaApplication
       studentRepository.findStudentsByFirstNameEqualsAndAgeIsGreaterThanEqualNamedParameters("Ioana", 25)
               .forEach(System.out::println);
 
+      System.out.println("Deleting Raul 4");
+      System.out.println(studentRepository.deleteStudentById(4L));
+
     };
   }
 
