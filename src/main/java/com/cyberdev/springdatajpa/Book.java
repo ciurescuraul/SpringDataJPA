@@ -68,9 +68,10 @@ public class Book {
     public Book() {
     }
 
-    public Book(LocalDateTime createdAt, Student student) {
+    public Book(String bookName,
+                LocalDateTime createdAt) {
         this.createdAt = createdAt;
-        this.student = student;
+        this.bookName = bookName;
     }
 
     public String getBookName() {

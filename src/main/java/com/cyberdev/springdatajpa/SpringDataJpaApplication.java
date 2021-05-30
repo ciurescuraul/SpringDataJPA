@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.github.javafaker.Faker;
 
+import java.time.LocalDateTime;
+
 @SpringBootApplication
 public class SpringDataJpaApplication
 {
@@ -36,13 +38,15 @@ public class SpringDataJpaApplication
               "123456789",
               student);
 
+      student.addBook(
+              new Book("Clean Code", LocalDateTime.now().minusDays(4)));
+      student.addBook(
+              new Book("Think and Grow Rich", LocalDateTime.now()));
+      student.addBook(
+              new Book("Spring Data JPA", LocalDateTime.now().minusYears(1)));
+
       studentIdCardRepository.save(studentIdCard);
 
-      studentRepository.findById(1L).ifPresent(System.out::println);
-
-      studentIdCardRepository.findById(1L).ifPresent(System.out::println);
-
-      studentRepository.deleteById(1L);
     };
   }
 
